@@ -11,17 +11,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151129092950) do
+ActiveRecord::Schema.define(version: 20151210003153) do
 
   create_table "hospitals", force: :cascade do |t|
     t.string   "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "hyis", force: :cascade do |t|
-    t.string   "name"
-    t.integer  "num"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -32,6 +25,32 @@ ActiveRecord::Schema.define(version: 20151129092950) do
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
   end
+
+  create_table "schedules", force: :cascade do |t|
+    t.integer  "room_id"
+    t.string   "break_time"
+    t.string   "open_time"
+    t.string   "closed_time"
+    t.string   "step_time"
+    t.string   "day_off"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "schedules", ["room_id"], name: "index_schedules_on_room_id"
+
+  create_table "shedules", force: :cascade do |t|
+    t.integer  "room_id"
+    t.string   "break_time"
+    t.string   "open_time"
+    t.string   "closed_time"
+    t.string   "step_time"
+    t.string   "day_off"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "shedules", ["room_id"], name: "index_shedules_on_room_id"
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false

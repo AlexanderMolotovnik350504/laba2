@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Room:</strong>
+  <%= @schedule.room %>
+</p>
+
+<p>
+  <strong>Break time:</strong>
+  <%= @schedule.break_time %>
+</p>
+
+<p>
+  <strong>Open time:</strong>
+  <%= @schedule.open_time %>
+</p>
+
+<p>
+  <strong>Closed time:</strong>
+  <%= @schedule.closed_time %>
+</p>
+
+<p>
+  <strong>Step time:</strong>
+  <%= @schedule.step_time %>
+</p>
+
+<p>
+  <strong>Day off:</strong>
+  <%= @schedule.day_off %>
+</p>
+
+<%= link_to 'Edit', edit_schedule_path(@schedule) %> |
+<%= link_to 'Back', schedules_path %>

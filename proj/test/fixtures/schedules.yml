@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  room_id: 
+  break_time: MyString
+  open_time: MyString
+  closed_time: MyString
+  step_time: MyString
+  day_off: MyString
+
+two:
+  room_id: 
+  break_time: MyString
+  open_time: MyString
+  closed_time: MyString
+  step_time: MyString
+  day_off: MyString
