@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :queu_es
   resources :schedules
   devise_for :users
   get 'persons/profile'

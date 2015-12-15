@@ -1,0 +1,27 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Queues</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Time</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @queu_es.each do |queu_e| %>
+      <tr>
+        <td><%= queu_e.time %></td>
+        <td><%= link_to 'Show', queu_e %></td>
+        <td><%= link_to 'Edit', edit_queu_e_path(queu_e) %></td>
+        <td><%= link_to 'Destroy', queu_e, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Queue', new_queu_e_path %>

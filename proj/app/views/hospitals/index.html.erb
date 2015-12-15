@@ -1,14 +1,18 @@
 <p id="notice"><%= notice %></p>
 
 <h1>Listing Hospitals</h1>
-
+<h2><%= render 'persons/profile' %></h2>
 <table>
   <thead>
   
-
   </thead>
-
+  <table border="1">
   <tbody>
+  <% if user_signed_in? %>
+    <%= link_to 'Занять очередь', new_queu_e_path %>
+    <%= a=current_user.id %>
+  <% end %>
+
     <% @hospitals.each do |hospital| %>
       <tr>
         <td><%= hospital.name %></td>
@@ -17,21 +21,57 @@
         <td><%= link_to 'Destroy', hospital, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
       <tr>
-      <th>Room</th>
-      <th>Breake time</th>
-      <th>Open time</th>
-      <th>Closed time</th>
-      <th>Day off</th>
+      <th>Кабинет</th>
+      <th>Работает с</th>
+      <th>Перерыв</th>
+      <th>Закрывается в</th>
+      <th>Выходной</th>
     </tr>
       <% hospital.rooms.each do |room| %>
-    
       <tr>
-      <td><%= room.name %></show>
-      <td><%= room.schedule.break_time %></td>
+      <td><%= room.name %> (id=<%= room.id %>)</td>
       <td><%= room.schedule.open_time %></td>
+      <td><%= room.schedule.break_time %></td>
       <td><%= room.schedule.closed_time %></td>
       <td><%= room.schedule.day_off %></td>
-      </tr>
+      <% room.queu_es.each do |queu_e| %>
+      <% if queu_e.time[1]=="8" && queu_e.time[3]<"3" %><tr><td>08:00-08:30 <%= current_user.email %></td></tr>
+      <% end %>
+      <% if queu_e.time[1]=="8" && queu_e.time[3]>"3" %><tr><td>08:30-09:00 <%= current_user.email %></td></tr>
+      <% end %>
+      <% if queu_e.time[1]=="9" && queu_e.time[3]<"3" %><tr><td>09:00-09:30 <%= current_user.email %></td></tr>
+      <% end %>
+      <% if queu_e.time[1]=="9" && queu_e.time[3]>"3" %><tr><td>09:30-10:00 <%= current_user.email %></td></tr>
+      <% end %>
+      <% if queu_e.time[0..1]=="10" && queu_e.time[3]<"3" %><tr><td>10:00-10:30 <%= current_user.email %></td></tr>
+      <% end %>
+      <% if queu_e.time[1]=="10" && queu_e.time[3]>"3" %><tr><td>10:30-11:00 <%= current_user.email %></td></tr>
+      <% end %>
+      <% if queu_e.time[1]=="11" && queu_e.time[3]<"3" %><tr><td>11:00-11:30 <%= current_user.email %></td></tr>
+      <% end %>
+      <% if queu_e.time[1]=="11" && queu_e.time[3]>"3" %><tr><td>11:30-12:00 <%= current_user.email %></td></tr>
+      <% end %>
+      <% if queu_e.time[0..1]=="12" && queu_e.time[3]<"3" %><tr><td>12:00-12:30 <%= current_user.email %></td></tr>
+      <% end %>
+      <% if queu_e.time[0..1]=="12" && queu_e.time[3]>"3" %><tr><td>12:30-13:00 <%= current_user.email %></td></tr>
+      <% end %>
+      <% if queu_e.time[0..1]=="13" && queu_e.time[3]<"3" %><tr><td>13:00-13:30 <%= current_user.email %></td></tr>
+      <% end %>
+      <% if queu_e.time[0..1]=="13" && queu_e.time[3]>"3" %><tr><td>13:30-14:00 <%= current_user.email %></td></tr>
+      <% end %>
+      <% if queu_e.time[0..1]=="14" && queu_e.time[3]<"3" %><tr><td>14:00-14:30 <%= current_user.email %></td></tr>
+      <% end %>
+      <% if queu_e.time[0..1]=="14" && queu_e.time[3]>"3" %><tr><td>14:30-15:00 <%= current_user.email %></td></tr>
+      <% end %>
+      <% if queu_e.time[0..1]=="15" && queu_e.time[3]<"3" %><tr><td>15:00-15:30 <%= current_user.email %></td></tr>
+      <% end %>
+      <% if queu_e.time[0..1]=="15" && queu_e.time[3]>"3" %><tr><td>15:30-16:00 <%= current_user.email %></td></tr>
+      <% end %>
+      <% if queu_e.time[0..1]=="16" && queu_e.time[3]<"3" %><tr><td>16:00-16:30 <%= current_user.email %></td></tr>
+      <% end %>
+      <% if queu_e.time[0..1]=="16" && queu_e.time[3]>"3" %><tr><td>16:30-17:00 <%= current_user.email %></td></tr>
+      <% end %>
+        <% end %>
       <% end %>
     <% end %>
   </tbody>
@@ -40,4 +80,4 @@
 <br>
 
 <%= link_to 'New Hospital', new_hospital_path %>
-<%= render 'persons/profile' %>
+

@@ -11,13 +11,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151210003153) do
+ActiveRecord::Schema.define(version: 20151214195318) do
 
   create_table "hospitals", force: :cascade do |t|
     t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
+  create_table "queu_es", force: :cascade do |t|
+    t.integer  "room_id"
+    t.string   "date"
+    t.string   "time"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "queu_es", ["room_id"], name: "index_queu_es_on_room_id"
 
   create_table "rooms", force: :cascade do |t|
     t.integer  "name"
